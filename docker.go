@@ -187,9 +187,6 @@ func (c *DockerContainer) Terminate(ctx context.Context) error {
 }
 
 func (c *DockerContainer) inspectContainer(ctx context.Context) (*types.ContainerJSON, error) {
-	if c.raw != nil {
-		return c.raw, nil
-	}
 	inspect, err := c.provider.client.ContainerInspect(ctx, c.ID)
 	if err != nil {
 		return nil, err
